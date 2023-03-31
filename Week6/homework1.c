@@ -5,25 +5,31 @@
 // Problem 1
 #include <stdio.h>
 int main(){
-    int a = 10, b = 20, swap; // A
+    // A
+    int a = 10, b = 20, swap; 
     int *p, *q;
     int sum, diff, product, quotient;
-    p = &a; // B
-    q = &b;
-    swap = *p; // C
+    // B
+    *p = &a; 
+    *q = &b;
+    // C
+    swap = *p; 
     *p = *q;
     *q = swap;
-    sum = *p + *q; // D
+    // D
+    sum = *p + *q; 
     diff = *p - *q;
     product = *p * (*q);
     quotient = *p / (*q);
-    printf("%d %d %d %d %d %d", *p, *q, sum, diff, product, quotient); // E
+    // E
+    printf("a = %d b = %d\nSum = %d Diff = %d Product = %d Quotient = %d\n", *p, *q, sum, diff, product, quotient); 
 }
 
 // Problem 2
 #include <stdio.h>
 int main(){
-    int arr[10], sum = 0; // A
+    // A
+    int arr[10], sum = 0; 
     for (int i = 0, j = 2; i < 10; i++, j += 2){
         if (i % 2 == 0){
             arr[i] = j;
@@ -32,12 +38,15 @@ int main(){
         arr[i] = -j;
         }
     }
-    int *p = &arr[0]; // B
-    for (int i = 0; i < 10; i++){ // C
+    // B
+    int *p = &arr[0]; 
+    // C
+    for (int i = 0; i < 10; i++){ 
         sum += *(p + i);
     }
     int max = arr[0], min = arr[0];
-    for (int i = 0; i < 10; i++){ // D
+    // D
+    for (int i = 0; i < 10; i++){ 
         if (*(p + i) > max){
             max = *(p + i);
         }
@@ -45,14 +54,16 @@ int main(){
             min = *(p + i);
         }
     }
-    printf("%d %d %d", sum, min, max); // E
+    // E
+    printf("Sum = %d min = %d max = %d\n", sum, min, max); 
 }
 
 // Problem 3
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node{ // A
+// A
+struct Node{ 
     int data;
     struct Node *next;
 };
@@ -61,23 +72,29 @@ int main()
 {
     struct Node *head = NULL;
     struct Node *second = NULL;
-    head = (struct Node *)malloc(sizeof(struct Node)); // B
+    // B
+    head = (struct Node *)malloc(sizeof(struct Node)); 
     second = (struct Node *)malloc(sizeof(struct Node));
-    head->data = 1; // C
+    // C
+    head->data = 1; 
     second->data = 2;
-    head->next = second; // D
+    // D
+    head->next = second; 
     second->next = NULL;
     struct Node *temp = head;
-    while (temp != NULL){ // E
+    // E
+    while (temp != NULL){ 
         printf("%d ", temp->data);
         temp = temp->next;
     }
     printf("\n");
-    temp = head; // F
+    // F
+    temp = head; 
     head = head->next;
     free(temp);
     temp = head;
-    while (temp != NULL){ // G
+    // G
+    while (temp != NULL){ 
         printf("%d ", temp->data);
         temp = temp->next;
     }
