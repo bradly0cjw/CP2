@@ -12,3 +12,4 @@
 *.pdb
 *.ilk
 .vscode
+*test*.*
