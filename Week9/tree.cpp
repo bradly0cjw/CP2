@@ -9,6 +9,10 @@ using namespace std;
 struct Node{
     int data;
     Node*left,*right;
+    Node(){
+        data=0;
+        left=right=0;
+    };
     Node(int num){
         data=num;
         left=right=0;
@@ -16,8 +20,11 @@ struct Node{
 };
 
 int main(){
-    Node*tree=0;
+    Node*tree=0,*ptr;
     tree=new Node(1);
-    tree->left=new Node(2);
-    tree->right=new Node(3);
+    ptr=new Node(2);
+    tree->left=ptr;
+    ptr=tree;
+    ptr=new Node(3);
+    tree->right=ptr;
 }
