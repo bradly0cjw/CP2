@@ -9,6 +9,7 @@ private:
     int top;
     int *arr;
 public:
+    int len=DEFAULT_STACK_SIZE;
     Stack() : top(-1) {
         arr=new int[DEFAULT_STACK_SIZE];
     }
@@ -18,6 +19,7 @@ public:
             exit(EXIT_FAILURE);
         }
         arr=new int[size];
+        len=size;
     }
     Stack(const Stack& s): top(s.top){
         arr=new int[DEFAULT_STACK_SIZE];
@@ -32,7 +34,7 @@ public:
     }
     // Function to check if the stack is full
     bool is_full() {
-        return top == DEFAULT_STACK_SIZE - 1;
+        return top == len - 1;
     }
     // Function to push an element onto the stack
     void push(int element) {
@@ -83,12 +85,18 @@ public:
                 temp2.push(temp.pop()); 
             }
             while(!temp2.is_empty()){
-                push(temp2.pop()); 
+                if (!is_full()){
+                    push(temp2.pop()); 
+                }
+                else{
+                    cout<<"Warning! Stack overflow\n";
+                    return *this;
+                }
             }
         }
         return *this;
     }
-    friend Stack& operator+=(Stack& s, const Stack& t);
+    // friend Stack& operator+=(Stack& s, const Stack& t);
 };
     Stack& operator<<(Stack&s,int data){
         s.push(data);
