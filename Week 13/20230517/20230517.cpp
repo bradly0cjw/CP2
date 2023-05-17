@@ -5,9 +5,11 @@
 using namespace std;
 int main()
 {
-    int i = 3;
+    int i = 0x3;
     i = i + 1;
+    const char *str = "asdfgh";
     cout << "Hello World!\n"<<i;
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
